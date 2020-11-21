@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rock Paper Scissors with TensorFlow.js</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Import the webpage's stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Import TensorFlow.js library -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script src="index.js"></script>
+    <script src="game.js"></script>
+
+    <div id="container">
+        <div id="intro">
+            <div id="title">
+                Rock Paper Scissors with TensorFlow.js
+            </div>
+            <div>
+                Use <a
+                    href="https://teachablemachine.withgoogle.com/train/image">Teachable
+                    Machine</a> to train a recognizer for these classes:
+            </div>
+            <div class="list">
+                <div>😐 Neutral</div>
+                <div>🗿 Rock</div>
+                <div>📃 Paper</div>
+                <div>✂️ Scissors</div>
+            </div>
+            <div>
+                Or you can use the default model below, which may not work as
+                well.
+            </div>
+            <div>
+                Paste the link to your model into the input below.
+                Then, click "Start" to begin playing using your webcam.
+            </div>
+            <div id="tm-model-section">
+                <input id="tm-model-url"
+                    value="https://teachablemachine.withgoogle.com/models/3gl3CF6TR/">
+                <button type="button" onclick="app.init()">Start</button>
+                <button type="button" onclick="app.stop()">Stop</button>
+            </div>
+        </div>
+
+        <div id="game">
+            <div id="player">
+                <div class="header">
+                    Player
+                </div>
+                <div class="body">
+                    <div id="player-move-container">⌛</div>
+                    <div id="player-label-container" class="bar-chart">
+                    </div>
+                </div>
+            </div>
+            <div id="controls">
+                <div class="header">
+                    Score |
+                    <span id="player-score">0</span> :
+                    <span id="opponent-score">0</span>
+                </div>
+                <div class="body">
+                    <div id="controls-container" onclick="app.play()">▶</div>
+                    <div id="controls-info">Next Game</div>
+                </div>
+            </div>
+            <div id="opponent">
+                <div class="header">
+                    Opponent
+                </div>
+                <div class="body">
+                    <div id="opponent-move-container">⌛</div>
+                    <div id="opponent-label-container" class="bar-chart">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="history">
+        </div>
+    </div>
+</body>
+
+</html>
